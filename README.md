@@ -1,5 +1,7 @@
 # University of Miami Travel Policy Flight Booking
 
+**Source of the handbook:** http://umiami.policystat.com/policy/9607266/. The agent reads it verbatim (bundled at `src/plugin/data/policy.txt`); flights, fares and trips are synthetic.
+
 **No affiliation with the University of Miami.** The handbook is the University's public *Travel Policy*
 (PolicyStat ID 9607266, effective April 2021, <http://umiami.policystat.com/policy/9607266/>), bundled verbatim
 for research.
