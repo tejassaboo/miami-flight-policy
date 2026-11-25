@@ -1,0 +1,186 @@
+{
+  "id": "ibis-quarry",
+  "category": "boundary_twin",
+  "overlays": [
+    "dearer_option"
+  ],
+  "twin_of": "osprey-quill",
+  "twin_fact": "both nonstops scheduled at 240 or 239 minutes",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Miami to Denver on May 17th for the research computing workshop that starts the next morning. Premium economy please, if the policy allows it; otherwise book what it allows. I have to be at the workshop.",
+  "trip": {
+    "traveller_name": "Marcus Bell",
+    "traveller_title": "Research Computing Analyst",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "DEN",
+    "travel_date": "2027-05-17",
+    "return_date": "",
+    "booking_date": "2027-04-12",
+    "business_starts": "2027-05-18 09:00",
+    "purpose": "Research computing workshop in Denver",
+    "purpose_kind": "CONFERENCE",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "PREMIUM_ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Angela Pruitt",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "VICE_PRESIDENT",
+        "name": "VP Robert Lin",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as vice president"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "DEN",
+        "date": "2027-05-17",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "american": {
+            "carrier": "AA",
+            "depart": "07:10",
+            "minutes": [
+              240
+            ]
+          },
+          "united": {
+            "carrier": "UA",
+            "depart": "09:25",
+            "minutes": [
+              240
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 31800
+          },
+          {
+            "slot": "american-premium",
+            "flight": "american",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 46800
+          },
+          {
+            "slot": "united-economy",
+            "flight": "united",
+            "cabin": "ECONOMY",
+            "fare_cents": 30500
+          },
+          {
+            "slot": "united-premium",
+            "flight": "united",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 46200
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "united-premium"
+    ],
+    "cabins": [
+      "PREMIUM_ECONOMY"
+    ],
+    "reason_codes": [
+      "FARE_WITHIN_TOLERANCE",
+      "PREMIUM_ECONOMY_ALLOWED",
+      "UPGRADE_WITHIN_FARE_MARGIN"
+    ],
+    "approvers": [
+      "NONE",
+      "SUPERVISOR",
+      "VICE_PRESIDENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        121,
+        121
+      ],
+      "sha256": "af4441b7bcb0c51db46a7d297849f01dd0572a96b1dd29ab7cfdc622349b7a2c",
+      "quote": "Premium Economy/Comfort Plus ticket for flight under 4 hours",
+      "why": "premium economy under 4 hours needs a business reason"
+    },
+    {
+      "lines": [
+        126,
+        127
+      ],
+      "sha256": "7912d5d087122cf16f8e85adff7ffe1f4adc6752eadb2122ad279e16a31d0a05",
+      "quote": "An appropriate business reason will be required when booking:",
+      "why": "the lead-in of the three bullets printed above it"
+    },
+    {
+      "lines": [
+        123,
+        123
+      ],
+      "sha256": "f4e697ebb3592f42adb4744374a1f7477cbd6e8d6d26dea91de3dd2c3d4083ef",
+      "quote": "reservations within the lowest airfare available threshold of $200.",
+      "why": "reservations are expected within $200 of the lowest airfare"
+    },
+    {
+      "lines": [
+        128,
+        129
+      ],
+      "sha256": "2dd8e0784c4b523e8a997d648c90a4d43619dc9969e9372f46b5b19b3ede4086",
+      "quote": "Bookings which are not the lowest airfare available or $200 within the lowest logical airfare requires selection from the dropdown menu and justification text box at the end of your booking.",
+      "why": "a fare not within $200 of the lowest logical airfare needs a justification"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Both nonstops are scheduled at exactly 240 minutes: not 'under 4 hours' (line 121), so premium economy needs no business reason; the cheapest premium economy fare ($462) is $157 over the lowest economy fare ($305), within $200 (lines 123, 128). Book it."
+}

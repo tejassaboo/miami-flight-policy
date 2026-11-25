@@ -1,0 +1,183 @@
+{
+  "id": "cypress-ember",
+  "category": "easy",
+  "overlays": [],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Miami to Las Vegas on June 8th for the campus facilities conference that starts the next morning. I'd like business class, I just find it a lot more comfortable. If the policy doesn't allow it, book what it allows; I have to be at the conference.",
+  "trip": {
+    "traveller_name": "Derek Foster",
+    "traveller_title": "Director, Facilities Operations",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "LAS",
+    "travel_date": "2027-06-08",
+    "return_date": "",
+    "booking_date": "2027-05-10",
+    "business_starts": "2027-06-09 09:00",
+    "purpose": "Campus facilities management conference in Las Vegas",
+    "purpose_kind": "CONFERENCE",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "BUSINESS",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "I find business class a lot more comfortable",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Carla Mendes",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "VICE_PRESIDENT",
+        "name": "VP Steven Park",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as vice president"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "LAS",
+        "date": "2027-06-08",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "morning": {
+            "carrier": "AA",
+            "depart": "07:15"
+          },
+          "midday": {
+            "carrier": "AA",
+            "depart": "12:30"
+          }
+        },
+        "offers": [
+          {
+            "slot": "morning-economy",
+            "flight": "morning",
+            "cabin": "ECONOMY",
+            "fare_cents": 31900
+          },
+          {
+            "slot": "morning-business",
+            "flight": "morning",
+            "cabin": "BUSINESS",
+            "fare_cents": 98000
+          },
+          {
+            "slot": "midday-economy",
+            "flight": "midday",
+            "cabin": "ECONOMY",
+            "fare_cents": 29800
+          },
+          {
+            "slot": "midday-business",
+            "flight": "midday",
+            "cabin": "BUSINESS",
+            "fare_cents": 104000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "midday-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "BUSINESS_REASON_MISSING",
+      "LONG_FLIGHT_CONDITION_NOT_MET",
+      "UPGRADE_NOT_ELIGIBLE"
+    ],
+    "approvers": [
+      "NONE",
+      "SUPERVISOR",
+      "VICE_PRESIDENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "DEFINITIONS",
+      "POLICY",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        122,
+        122
+      ],
+      "sha256": "3546737addd42f7e189a37f517549a6a854f7239c4f03e2b308a75db70c6f267",
+      "quote": "First Class/Business Class ticket for flight under 8 hours",
+      "why": "business or first under 8 hours needs a business reason"
+    },
+    {
+      "lines": [
+        126,
+        127
+      ],
+      "sha256": "7912d5d087122cf16f8e85adff7ffe1f4adc6752eadb2122ad279e16a31d0a05",
+      "quote": "An appropriate business reason will be required when booking:",
+      "why": "the lead-in of the three bullets printed above it"
+    },
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        47,
+        49
+      ],
+      "sha256": "aaf878b5bdbe0476fbe3aa8b0b1315a50c4761853a13235c772161866c434f1a",
+      "quote": "Travelers are to exercise prudency when making travel reservations by always selecting the lowest fares available.",
+      "why": "the general duty: the lowest fares available"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Nonstops of 280 scheduled minutes: business class for a flight under 8 hours needs an appropriate business reason (lines 122, 126-127); comfort is not one. Book the lowest logical economy fare, American 12:30 at $298.",
+  "answer_key_inputs": {
+    "reason_kind": "personal"
+  }
+}

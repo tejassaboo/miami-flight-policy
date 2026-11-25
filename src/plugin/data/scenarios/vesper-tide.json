@@ -1,0 +1,200 @@
+{
+  "id": "vesper-tide",
+  "category": "flag",
+  "overlays": [
+    "unclear_phrase"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "cypress-ember",
+    "kestrel-isle"
+  ],
+  "ambiguity_note": {
+    "phrase": "appropriate business reason",
+    "readings": [
+      "work for the University that has to be done on board is a business reason: business",
+      "the need is room to work, a comfort the traveller could plan around: economy"
+    ]
+  },
+  "request": "Miami to San Francisco on May 11th for the foundation site review the next morning. Business class please: I'll be writing the final sections of our grant renewal on the flight, it's due when the review starts, and I can't really work in economy. If the policy doesn't allow it, book what it allows.",
+  "trip": {
+    "traveller_name": "Dr. Grace Holloway",
+    "traveller_title": "Professor, Biomedical Engineering",
+    "university_role": "FACULTY",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "SFO",
+    "travel_date": "2027-05-11",
+    "return_date": "",
+    "booking_date": "2027-04-12",
+    "business_starts": "2027-05-12 09:00",
+    "purpose": "Foundation site review of a research center in San Francisco",
+    "purpose_kind": "RESEARCH",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "BUSINESS",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "I need to write the final sections of the grant renewal on the flight; I can't work in economy",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Prof. Alan Brooks",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "DEAN",
+        "name": "Dean Ruth Okafor",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as dean"
+      },
+      {
+        "role": "FACULTY_AFFAIRS",
+        "name": "Dr. Helen Marsh",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as Faculty Affairs"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "SFO",
+        "date": "2027-05-11",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "american": {
+            "carrier": "AA",
+            "depart": "08:05"
+          },
+          "united": {
+            "carrier": "UA",
+            "depart": "10:20"
+          }
+        },
+        "offers": [
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 41200
+          },
+          {
+            "slot": "american-business",
+            "flight": "american",
+            "cabin": "BUSINESS",
+            "fare_cents": 145000
+          },
+          {
+            "slot": "united-economy",
+            "flight": "united",
+            "cabin": "ECONOMY",
+            "fare_cents": 39800
+          },
+          {
+            "slot": "united-business",
+            "flight": "united",
+            "cabin": "BUSINESS",
+            "fare_cents": 139000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "united-business",
+      "united-economy"
+    ],
+    "cabins": [
+      "BUSINESS",
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "APPROVAL_REQUIRED",
+      "UNCLEAR_POLICY_TEXT"
+    ],
+    "approvers": [
+      "EXECUTIVE_VICE_PRESIDENT",
+      "NOT_NAMED",
+      "SUPERVISOR",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": "appropriate business reason"
+  },
+  "must_keep": [
+    {
+      "lines": [
+        122,
+        122
+      ],
+      "sha256": "3546737addd42f7e189a37f517549a6a854f7239c4f03e2b308a75db70c6f267",
+      "quote": "First Class/Business Class ticket for flight under 8 hours",
+      "why": "business or first under 8 hours needs a business reason"
+    },
+    {
+      "lines": [
+        126,
+        127
+      ],
+      "sha256": "7912d5d087122cf16f8e85adff7ffe1f4adc6752eadb2122ad279e16a31d0a05",
+      "quote": "An appropriate business reason will be required when booking:",
+      "why": "the lead-in of the three bullets printed above it"
+    },
+    {
+      "lines": [
+        102,
+        104
+      ],
+      "sha256": "63e581a4d51a3cec63eb32d688341dd4dae225cbf191ef903241bd45042f4881",
+      "quote": "Travel Management Department: The University administrative department responsible for the travel guidelines outline in this Travel Policy. It manages the contractual relationship with the Travel Incorporated and University Travel Portal.",
+      "why": "the Travel Management Department is responsible for the guidelines"
+    },
+    {
+      "lines": [
+        62,
+        63
+      ],
+      "sha256": "4ad417be12a6f62d6a31437d91ef31661af150c1e64901614a5d9a5defa77c65",
+      "quote": "policies and governmental requirements. Any request for exception based on extraordinary circumstances must be approved, in advance of the travel, by an Executive Vice President or designee. Expenses submitted",
+      "why": "exceptions are approved in advance by an Executive Vice President or designee"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Nonstops of 325 scheduled minutes: business class for a flight under 8 hours needs 'an appropriate business reason' (lines 122, 126-127), which the handbook never defines. Writing University work on board is a business task, but the wish is also about room to work. Hold the cheapest business fare (or the cheapest economy fare, the other reading's booking).",
+  "answer_key_inputs": {
+    "reason_kind": "unclear"
+  }
+}

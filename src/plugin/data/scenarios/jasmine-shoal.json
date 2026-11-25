@@ -1,0 +1,220 @@
+{
+  "id": "jasmine-shoal",
+  "category": "flag",
+  "overlays": [
+    "unclear_phrase",
+    "multi_leg"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "ibis-quarry",
+    "osprey-quill"
+  ],
+  "ambiguity_note": {
+    "phrase": "flight under 4 hours",
+    "readings": [
+      "the journey is the flight: over 4 hours, so premium economy needs no reason",
+      "each flight is measured alone: all under 4 hours, so premium economy needs a reason the traveller does not give: economy"
+    ]
+  },
+  "request": "Miami to Denver on June 21st for the data science summer school, which starts the next morning. Premium economy please, if the policy allows it; otherwise book what it allows. I have to be there.",
+  "trip": {
+    "traveller_name": "Owen Pruitt",
+    "traveller_title": "Data Scientist, Institute for Data Science",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "DEN",
+    "travel_date": "2027-06-21",
+    "return_date": "",
+    "booking_date": "2027-05-24",
+    "business_starts": "2027-06-22 09:00",
+    "purpose": "Data science summer school in Denver",
+    "purpose_kind": "CONFERENCE",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "PREMIUM_ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Angela Pruitt",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "VICE_PRESIDENT",
+        "name": "VP Robert Lin",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as vice president"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "DEN",
+        "date": "2027-06-21",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "dallas": {
+            "carrier": "AA",
+            "via": [
+              "DFW"
+            ],
+            "depart": "07:40",
+            "minutes": [
+              170,
+              120
+            ],
+            "layovers": [
+              65
+            ]
+          },
+          "atlanta": {
+            "carrier": "DL",
+            "via": [
+              "ATL"
+            ],
+            "depart": "08:25",
+            "minutes": [
+              110,
+              200
+            ],
+            "layovers": [
+              60
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "dallas-economy",
+            "flight": "dallas",
+            "cabin": "ECONOMY",
+            "fare_cents": 33800
+          },
+          {
+            "slot": "dallas-premium",
+            "flight": "dallas",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 49000
+          },
+          {
+            "slot": "atlanta-economy",
+            "flight": "atlanta",
+            "cabin": "ECONOMY",
+            "fare_cents": 32400
+          },
+          {
+            "slot": "atlanta-premium",
+            "flight": "atlanta",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 48800
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "atlanta-economy",
+      "atlanta-premium"
+    ],
+    "cabins": [
+      "ECONOMY",
+      "PREMIUM_ECONOMY"
+    ],
+    "reason_codes": [
+      "APPROVAL_REQUIRED",
+      "UNCLEAR_POLICY_TEXT"
+    ],
+    "approvers": [
+      "EXECUTIVE_VICE_PRESIDENT",
+      "NOT_NAMED",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": "flight under 4 hours"
+  },
+  "must_keep": [
+    {
+      "lines": [
+        121,
+        121
+      ],
+      "sha256": "af4441b7bcb0c51db46a7d297849f01dd0572a96b1dd29ab7cfdc622349b7a2c",
+      "quote": "Premium Economy/Comfort Plus ticket for flight under 4 hours",
+      "why": "premium economy under 4 hours needs a business reason"
+    },
+    {
+      "lines": [
+        126,
+        127
+      ],
+      "sha256": "7912d5d087122cf16f8e85adff7ffe1f4adc6752eadb2122ad279e16a31d0a05",
+      "quote": "An appropriate business reason will be required when booking:",
+      "why": "the lead-in of the three bullets printed above it"
+    },
+    {
+      "lines": [
+        123,
+        123
+      ],
+      "sha256": "f4e697ebb3592f42adb4744374a1f7477cbd6e8d6d26dea91de3dd2c3d4083ef",
+      "quote": "reservations within the lowest airfare available threshold of $200.",
+      "why": "reservations are expected within $200 of the lowest airfare"
+    },
+    {
+      "lines": [
+        102,
+        104
+      ],
+      "sha256": "63e581a4d51a3cec63eb32d688341dd4dae225cbf191ef903241bd45042f4881",
+      "quote": "Travel Management Department: The University administrative department responsible for the travel guidelines outline in this Travel Policy. It manages the contractual relationship with the Travel Incorporated and University Travel Portal.",
+      "why": "the Travel Management Department is responsible for the guidelines"
+    },
+    {
+      "lines": [
+        62,
+        63
+      ],
+      "sha256": "4ad417be12a6f62d6a31437d91ef31661af150c1e64901614a5d9a5defa77c65",
+      "quote": "policies and governmental requirements. Any request for exception based on extraordinary circumstances must be approved, in advance of the travel, by an Executive Vice President or designee. Expenses submitted",
+      "why": "exceptions are approved in advance by an Executive Vice President or designee"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Only connections are listed. Each flight is under 4 hours (110 and 200 minutes through Atlanta, 170 and 120 through Dallas), but each journey is not (310 and 290 minutes flying, 370 and 355 elapsed). Line 121 needs a business reason for premium economy on a 'flight under 4 hours' and does not say whether a connection is one flight or several. The cheapest premium economy fare is $164 over the lowest economy fare (within $200). Hold Delta premium economy (or Delta economy, the other reading's booking)."
+}

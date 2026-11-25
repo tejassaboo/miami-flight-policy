@@ -1,0 +1,188 @@
+{
+  "id": "heron-gable",
+  "category": "easy",
+  "overlays": [],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Hi, I'm presenting a poster at the materials science symposium in Chicago on Friday morning. Can you book me Miami to O'Hare on Thursday, March 11th? I'd like to leave around 8 in the morning.",
+  "trip": {
+    "traveller_name": "Priya Natarajan",
+    "traveller_title": "PhD student, Materials Science",
+    "university_role": "STUDENT",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "ORD",
+    "travel_date": "2027-03-11",
+    "return_date": "",
+    "booking_date": "2027-02-08",
+    "business_starts": "2027-03-12 09:00",
+    "purpose": "Poster presentation at a materials science symposium in Chicago",
+    "purpose_kind": "CONFERENCE",
+    "funding": "Graduate School student travel award",
+    "personal_days": "",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "08:00",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Prof. Lena Ortiz",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "DEAN",
+        "name": "Dean Marcus Hale",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as dean"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "ORD",
+        "date": "2027-03-11",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "early": {
+            "carrier": "AA",
+            "depart": "06:40"
+          },
+          "morning": {
+            "carrier": "UA",
+            "depart": "08:30"
+          },
+          "late-morning": {
+            "carrier": "AA",
+            "depart": "09:50"
+          },
+          "afternoon": {
+            "carrier": "AA",
+            "depart": "13:15"
+          },
+          "evening": {
+            "carrier": "UA",
+            "depart": "18:20"
+          }
+        },
+        "offers": [
+          {
+            "slot": "early-economy",
+            "flight": "early",
+            "cabin": "ECONOMY",
+            "fare_cents": 25200
+          },
+          {
+            "slot": "morning-economy",
+            "flight": "morning",
+            "cabin": "ECONOMY",
+            "fare_cents": 23100
+          },
+          {
+            "slot": "late-morning-economy",
+            "flight": "late-morning",
+            "cabin": "ECONOMY",
+            "fare_cents": 24400
+          },
+          {
+            "slot": "afternoon-economy",
+            "flight": "afternoon",
+            "cabin": "ECONOMY",
+            "fare_cents": 17800
+          },
+          {
+            "slot": "evening-economy",
+            "flight": "evening",
+            "cabin": "ECONOMY",
+            "fare_cents": 16900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "morning-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "REQUESTED_TIME_WINDOW"
+    ],
+    "approvers": [
+      "DEAN",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "DEFINITIONS",
+      "POLICY",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        115,
+        116
+      ],
+      "sha256": "b1c0062433bf34ffae4f73451e9c07847875d51122fe4fdb9b40e887635cbf26",
+      "quote": "Travelers or their designated Travel Assistant should make all reasonable efforts reserving the lowest available fare within two hours of the desired departure or arrival time.",
+      "why": "the lowest available fare within two hours of the desired departure or arrival time"
+    },
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        79,
+        80
+      ],
+      "quote": "For airfare Group Travel is when 10 or more people are all traveling together",
+      "why": "a group rule for ten or more; the traveller books alone"
+    }
+  ],
+  "design_notes": "The traveller wants to leave around 08:00. Lines 115-116: the lowest available fare within two hours of the desired departure time. The 06:40, 08:30 and 09:50 flights are within two hours; the cheapest of them is United 08:30 at $231. The 13:15 and 18:20 flights are cheaper but more than two hours from the desired time. Supervisor (advisor) and dean approvals are on file (lines 17-19, 34-37)."
+}

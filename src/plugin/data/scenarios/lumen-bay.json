@@ -1,0 +1,183 @@
+{
+  "id": "lumen-bay",
+  "category": "multi_rule",
+  "overlays": [
+    "multi_traveller",
+    "outside_air_section"
+  ],
+  "twin_of": "wren-hollow",
+  "twin_fact": "the spouse holds a University position and co-presents, or has none and goes along on holiday",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book my wife, Dr. Ana Ruiz, Miami to Philadelphia on April 7th. She's a research scientist in our lab and co-presents our study with me at the cardiology symposium the next morning. We'd like to leave around 9 in the morning.",
+  "trip": {
+    "traveller_name": "Dr. Ana Ruiz",
+    "traveller_title": "Research Scientist, Cardiology (wife of Prof. Mark Ruiz)",
+    "university_role": "STAFF",
+    "passenger": "COMPANION",
+    "accompanies": "Prof. Mark Ruiz, her husband",
+    "companion_contribution": "Co-presents the lab's study at the symposium",
+    "origin": "MIA",
+    "destination": "PHL",
+    "travel_date": "2027-04-07",
+    "return_date": "",
+    "booking_date": "2027-03-08",
+    "business_starts": "2027-04-08 09:00",
+    "purpose": "Co-presenting a study at a cardiology symposium in Philadelphia",
+    "purpose_kind": "CONFERENCE",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "09:00",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Prof. Leah Grant",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "DEAN",
+        "name": "Dean Ruth Okafor",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as dean"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "PHL",
+        "date": "2027-04-07",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "dawn": {
+            "carrier": "AA",
+            "depart": "06:15"
+          },
+          "early": {
+            "carrier": "AA",
+            "depart": "07:20"
+          },
+          "late-morning": {
+            "carrier": "AA",
+            "depart": "10:40"
+          },
+          "afternoon": {
+            "carrier": "AA",
+            "depart": "13:50"
+          }
+        },
+        "offers": [
+          {
+            "slot": "dawn-economy",
+            "flight": "dawn",
+            "cabin": "ECONOMY",
+            "fare_cents": 19800
+          },
+          {
+            "slot": "early-economy",
+            "flight": "early",
+            "cabin": "ECONOMY",
+            "fare_cents": 24600
+          },
+          {
+            "slot": "late-morning-economy",
+            "flight": "late-morning",
+            "cabin": "ECONOMY",
+            "fare_cents": 22900
+          },
+          {
+            "slot": "afternoon-economy",
+            "flight": "afternoon",
+            "cabin": "ECONOMY",
+            "fare_cents": 20500
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "late-morning-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "COMPANION_UNIVERSITY_ROLE",
+      "LOWEST_FARE",
+      "REQUESTED_TIME_WINDOW"
+    ],
+    "approvers": [
+      "DEAN",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "BOOKING_FOR_OTHERS",
+      "DEFINITIONS",
+      "POLICY",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        269,
+        272
+      ],
+      "sha256": "a3b282cdd168f21394e6705c830d5b85f8acfa2a629b542d0838bd00253cce1f",
+      "quote": "Companion: In general, the expenses of a spouse, family member, or other person accompanying the business Travelers are not payable using University Funds. Such expenses are only payable if the accompanying person has a position with the University and is traveling to make a significant contribution in furtherance of University business. University employees may use the add guest function on the",
+      "why": "a companion is payable only with a University position and a significant contribution"
+    },
+    {
+      "lines": [
+        115,
+        116
+      ],
+      "sha256": "b1c0062433bf34ffae4f73451e9c07847875d51122fe4fdb9b40e887635cbf26",
+      "quote": "Travelers or their designated Travel Assistant should make all reasonable efforts reserving the lowest available fare within two hours of the desired departure or arrival time.",
+      "why": "the lowest available fare within two hours of the desired departure or arrival time"
+    },
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "A companion's expenses are payable only if the companion has a position with the University and travels to make a significant contribution (lines 269-272): Dr. Ruiz is a University research scientist who co-presents. The lowest fare within two hours of 09:00 (lines 115-116) is the 10:40 at $229; the 06:15 and 13:50 are cheaper but outside the window. Her own supervisor and dean approved her trip."
+}

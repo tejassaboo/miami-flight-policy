@@ -1,0 +1,175 @@
+{
+  "id": "pelican-arch",
+  "category": "easy",
+  "overlays": [
+    "multi_leg"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Can you book me Miami to Phoenix on May 4th for the site visit at the solar test facility the next morning? I don't mind connecting if it saves real money.",
+  "trip": {
+    "traveller_name": "Gabriel Soto",
+    "traveller_title": "Research Engineer, Energy Institute",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "PHX",
+    "travel_date": "2027-05-04",
+    "return_date": "",
+    "booking_date": "2027-04-05",
+    "business_starts": "2027-05-05 08:30",
+    "purpose": "Site visit at a solar test facility near Phoenix",
+    "purpose_kind": "SITE_VISIT",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Nadia Castillo",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "VICE_PRESIDENT",
+        "name": "VP Robert Lin",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as vice president"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "PHX",
+        "date": "2027-05-04",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "nonstop": {
+            "carrier": "AA",
+            "depart": "08:00",
+            "minutes": [
+              315
+            ]
+          },
+          "atlanta": {
+            "carrier": "DL",
+            "via": [
+              "ATL"
+            ],
+            "depart": "08:00",
+            "minutes": [
+              110,
+              255
+            ],
+            "layovers": [
+              60
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "nonstop-economy",
+            "flight": "nonstop",
+            "cabin": "ECONOMY",
+            "fare_cents": 54800
+          },
+          {
+            "slot": "atlanta-economy",
+            "flight": "atlanta",
+            "cabin": "ECONOMY",
+            "fare_cents": 29800
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "atlanta-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ALTERNATE_ROUTE_TOO_EXPENSIVE",
+      "ALTERNATE_ROUTE_WITHIN_MARGIN",
+      "COST_SAVINGS",
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE",
+      "SUPERVISOR",
+      "VICE_PRESIDENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "DEFINITIONS",
+      "POLICY",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        149,
+        150
+      ],
+      "sha256": "8286d94d2d08b8e768c7811ff1912cd094cbf8e0a0146af9a848790681fdea36",
+      "quote": "Connecting Flights: Connecting flights should be considered if fare savings exceeds $200 and does not increase travel time by more than two hours or if no other flight is available.",
+      "why": "connections are considered when they save more than $200 and add no more than two hours"
+    },
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        47,
+        49
+      ],
+      "sha256": "aaf878b5bdbe0476fbe3aa8b0b1315a50c4761853a13235c772161866c434f1a",
+      "quote": "Travelers are to exercise prudency when making travel reservations by always selecting the lowest fares available.",
+      "why": "the general duty: the lowest fares available"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The one-stop through Atlanta saves $250 against the nonstop and, leaving at the same time, lands 110 minutes later (elapsed 425 against 315): it saves more than $200 and adds no more than two hours (lines 149-150), so it is the lowest logical fare; the traveller is happy to connect."
+}

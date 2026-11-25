@@ -1,0 +1,16 @@
+{
+  "id": "miami-flight-policy",
+  "name": "University of Miami Travel Policy Flight Booking",
+  "slug": "miami",
+  "title": "University of Miami Travel Policy (PolicyStat ID 9607266, effective April 2021)",
+  "frozen_file": "miami_policy.txt",
+  "sha256": "f05a964f3fbe6216ee30f14358838159def9f46e49e894484476a5956c6fb02e",
+  "raw_pdf_sha256": "7e17bf73d5bf6581a7654cb5c58f2bd14eab2d639d97dc7eac10706a5ff72079",
+  "words": 3442,
+  "lines": 289,
+  "source": "http://umiami.policystat.com/policy/9607266/",
+  "frozen_on": "2026-11-24",
+  "scenario_count": 24,
+  "currency": "USD",
+  "background_offers": 0
+}

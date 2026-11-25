@@ -1,0 +1,143 @@
+{
+  "id": "ochre-fen",
+  "category": "refusal",
+  "overlays": [
+    "personal_travel",
+    "outside_air_section"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Can you book me Miami to Denver on July 16th for my cousin's wedding? Put it on the department's travel card and I'll sort it out with them later.",
+  "trip": {
+    "traveller_name": "Kyle Jensen",
+    "traveller_title": "IT Support Specialist",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "DEN",
+    "travel_date": "2027-07-16",
+    "return_date": "",
+    "booking_date": "2027-06-14",
+    "business_starts": "2027-07-17 16:00",
+    "purpose": "A cousin's wedding in Denver",
+    "purpose_kind": "PERSONAL",
+    "funding": "The department's University Travel Card, to be repaid by the traveller",
+    "personal_days": "",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "DEN",
+        "date": "2027-07-16",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "american": {
+            "carrier": "AA",
+            "depart": "08:20"
+          },
+          "united": {
+            "carrier": "UA",
+            "depart": "11:45"
+          }
+        },
+        "offers": [
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 27800
+          },
+          {
+            "slot": "united-economy",
+            "flight": "united",
+            "cabin": "ECONOMY",
+            "fare_cents": 25900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "REFUSE",
+    "offer_slots": [],
+    "cabins": [
+      "NONE"
+    ],
+    "reason_codes": [
+      "OUTSIDE_POLICY_SCOPE",
+      "PERSONAL_TRAVEL_NOT_COVERED"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "DEFINITIONS",
+      "POLICY",
+      "PURPOSE",
+      "SCOPE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        26,
+        31
+      ],
+      "sha256": "b255cf2403b00fbac75cf28846489e2b4ee64fe5f9def36dc9f0cc79351fa888",
+      "quote": "The scope of this policy applies to all University employees, faculty, students, and other University associates who travel or book travel on behalf of the University, irrespective of payment method or funding source (i.e., operating budget, grants, gifts). To support the University's Duty of Care responsibility, it should be aware of all business, education and research related travel in case of emergency situations and to provide necessary coordination and assistance. Individuals traveling on official University business are responsible for complying with these procedures and are expected to be financially prudent and reasonable with their travel expenses.",
+      "why": "the policy covers travel on University business"
+    },
+    {
+      "lines": [
+        68,
+        70
+      ],
+      "sha256": "a52d2120c773814f9262f7e5fbc03fd6d0158d7750b6b43ee538e939b257e409",
+      "quote": "Allowable Expense: A necessary, reasonable, and appropriate expense incurred for the primary benefit of university business and therefore permitted to be reimbursed or directly charged based on the permission of the university or by the terms of federally or private sponsored agreements.",
+      "why": "an allowable expense is incurred for the primary benefit of university business"
+    },
+    {
+      "lines": [
+        106,
+        107
+      ],
+      "sha256": "06bd98e7f992c12a78194769e5de6b57a09005792fab17c60d550f727c94a6f5",
+      "quote": "University Funds: Includes all source of funds under the University financial responsibility including operating, gifts, and grants.",
+      "why": "University Funds"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        99,
+        101
+      ],
+      "quote": "Travel Incorporated primary purpose is to assist with the needs of employees and students traveling on company business or personal reservations.",
+      "why": "the agency may help with personal reservations, but the University does not pay for them"
+    },
+    {
+      "lines": [
+        173,
+        174
+      ],
+      "quote": "The unused ticket may not be used for personal travel.",
+      "why": "about unused tickets"
+    }
+  ],
+  "design_notes": "A wedding is personal travel, not University business. Lines 26-31: the policy covers travel on behalf of the University; lines 68-70: an allowable expense is incurred for the primary benefit of university business; lines 106-107: University Funds. The University buys no ticket, card or not. Travel Incorporated may help with personal reservations (lines 99-101), but not on University funds."
+}

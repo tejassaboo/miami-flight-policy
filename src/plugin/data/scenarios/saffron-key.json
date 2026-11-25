@@ -1,0 +1,211 @@
+{
+  "id": "saffron-key",
+  "category": "distractor",
+  "overlays": [
+    "personal_travel",
+    "date_arithmetic",
+    "month_end"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I'm speaking at the higher-education IT conference in Boston that opens Tuesday, December 1st at 8:30. I'd like to fly up the Friday before, November 27th, and spend the weekend with my sister first; I'll stay at her place. Please book the Friday flight from Miami.",
+  "trip": {
+    "traveller_name": "Hannah Brooks",
+    "traveller_title": "Director, Academic Technology",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "BOS",
+    "travel_date": "2026-11-27",
+    "return_date": "",
+    "booking_date": "2026-11-02",
+    "business_starts": "2026-12-01 08:30",
+    "purpose": "Speaking at a higher-education IT conference in Boston",
+    "purpose_kind": "CONFERENCE",
+    "funding": "Department operating budget",
+    "personal_days": "A weekend with family in Boston before the conference",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Nora Feld",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "VICE_PRESIDENT",
+        "name": "VP Daniel Cho",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as vice president"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "BOS",
+        "date": "2026-11-27",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "jetblue": {
+            "carrier": "B6",
+            "depart": "07:30"
+          },
+          "american": {
+            "carrier": "AA",
+            "depart": "09:15"
+          },
+          "delta": {
+            "carrier": "DL",
+            "depart": "11:40"
+          }
+        },
+        "offers": [
+          {
+            "slot": "friday-jetblue",
+            "flight": "jetblue",
+            "cabin": "ECONOMY",
+            "fare_cents": 28900
+          },
+          {
+            "slot": "friday-american",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 31800
+          },
+          {
+            "slot": "friday-delta",
+            "flight": "delta",
+            "cabin": "ECONOMY",
+            "fare_cents": 33500
+          }
+        ]
+      },
+      {
+        "name": "business-day",
+        "origin": "MIA",
+        "destination": "BOS",
+        "date": "2026-11-30",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "jetblue": {
+            "carrier": "B6",
+            "depart": "08:00"
+          },
+          "american": {
+            "carrier": "AA",
+            "depart": "10:10"
+          }
+        },
+        "offers": [
+          {
+            "slot": "monday-jetblue",
+            "flight": "jetblue",
+            "cabin": "ECONOMY",
+            "fare_cents": 21400
+          },
+          {
+            "slot": "monday-american",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 22900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "friday-jetblue"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "PERSONAL_EXTENSION_COMPARISON",
+      "PERSONAL_TRAVEL_NOT_COVERED"
+    ],
+    "approvers": [
+      "NONE",
+      "SUPERVISOR",
+      "VICE_PRESIDENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        139,
+        144
+      ],
+      "sha256": "5371ae8141aa77da3db1264b1efc437dbdf4bf1cbcdaec60c884f1eaf86e8068",
+      "quote": "When booking a flight that is extended for personal travel, a comparison non-refundable coach fare quote with the equivalent dates of travel for business being conducted is required. Airfares submitted with an additional leg of travel not related to business, must be accompanied by an equivalent non-refundable coach fare quote for the most direct route to the business destination obtained at the time of booking. Reimbursement is limited to the lesser airfare amount. Inability to provide a comparison quote will result in denial of reimbursement.",
+      "why": "a personal extension needs a comparison coach quote; reimbursement is the lesser fare"
+    },
+    {
+      "lines": [
+        135,
+        136
+      ],
+      "sha256": "13038623898d7712a9ca537ff2002a65175de4a5f494b6a7812e6a9e481fd2fc",
+      "quote": "Business trips normally commence one day before the conference/meeting",
+      "why": "the business day is the day before the conference"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        136,
+        138
+      ],
+      "quote": "the University may reimburse the traveler for expenses up to one day after the conference end date",
+      "why": "a rule for the end of the trip, not the flight out"
+    },
+    {
+      "lines": [
+        191,
+        192
+      ],
+      "quote": "University employees are authorized to use Airbnb for business if stays are four (4) days or longer",
+      "why": "a lodging rule with a day count"
+    }
+  ],
+  "design_notes": "The trip is extended for personal travel. Business trips normally commence one day before the conference (lines 135-136): Monday, November 30. Lines 139-144: a comparison non-refundable coach quote for the business dates (JetBlue Monday $214) goes with the booking, and reimbursement is limited to the lesser fare. The flight the traveller will take is booked: JetBlue Friday at $289. The one-day-after and Airbnb day counts are distractors."
+}

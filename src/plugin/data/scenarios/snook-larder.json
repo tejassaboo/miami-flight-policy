@@ -1,0 +1,184 @@
+{
+  "id": "snook-larder",
+  "category": "boundary_twin",
+  "overlays": [
+    "multi_leg",
+    "dearer_option"
+  ],
+  "twin_of": "egret-sable",
+  "twin_fact": "connection fare 27000 or 27200 cents (saves 20100 or 19900 against the nonstop)",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Miami to Minneapolis on October 5th for the planning retreat, which starts the next morning. I'd prefer the nonstop.",
+  "trip": {
+    "traveller_name": "Jordan Pierce",
+    "traveller_title": "Program Manager, School of Nursing",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "MSP",
+    "travel_date": "2027-10-05",
+    "return_date": "",
+    "booking_date": "2027-09-07",
+    "business_starts": "2027-10-06 09:00",
+    "purpose": "Planning retreat with a partner nursing school in Minneapolis",
+    "purpose_kind": "MEETING",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "NONSTOP",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Prof. Karen Liu",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "DEAN",
+        "name": "Dean Ruth Okafor",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as dean"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "MSP",
+        "date": "2027-10-05",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "nonstop": {
+            "carrier": "AA",
+            "depart": "08:00",
+            "minutes": [
+              210
+            ]
+          },
+          "atlanta": {
+            "carrier": "DL",
+            "via": [
+              "ATL"
+            ],
+            "depart": "08:00",
+            "minutes": [
+              110,
+              145
+            ],
+            "layovers": [
+              50
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "nonstop-economy",
+            "flight": "nonstop",
+            "cabin": "ECONOMY",
+            "fare_cents": 47100
+          },
+          {
+            "slot": "atlanta-economy",
+            "flight": "atlanta",
+            "cabin": "ECONOMY",
+            "fare_cents": 27200
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "nonstop-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ALTERNATE_ROUTE_WITHIN_MARGIN",
+      "FARE_WITHIN_TOLERANCE",
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "DEAN",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "DEFINITIONS",
+      "POLICY",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        149,
+        150
+      ],
+      "sha256": "8286d94d2d08b8e768c7811ff1912cd094cbf8e0a0146af9a848790681fdea36",
+      "quote": "Connecting Flights: Connecting flights should be considered if fare savings exceeds $200 and does not increase travel time by more than two hours or if no other flight is available.",
+      "why": "connections are considered when they save more than $200 and add no more than two hours"
+    },
+    {
+      "lines": [
+        123,
+        123
+      ],
+      "sha256": "f4e697ebb3592f42adb4744374a1f7477cbd6e8d6d26dea91de3dd2c3d4083ef",
+      "quote": "reservations within the lowest airfare available threshold of $200.",
+      "why": "reservations are expected within $200 of the lowest airfare"
+    },
+    {
+      "lines": [
+        128,
+        129
+      ],
+      "sha256": "2dd8e0784c4b523e8a997d648c90a4d43619dc9969e9372f46b5b19b3ede4086",
+      "quote": "Bookings which are not the lowest airfare available or $200 within the lowest logical airfare requires selection from the dropdown menu and justification text box at the end of your booking.",
+      "why": "a fare not within $200 of the lowest logical airfare needs a justification"
+    },
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The connection saves only $199: not more than $200, so it need not be considered (lines 149-150), and the requested nonstop is within $200 of the lowest fare, within policy (lines 123, 128-129). Book the nonstop."
+}

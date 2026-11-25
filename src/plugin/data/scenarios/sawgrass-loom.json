@@ -1,0 +1,182 @@
+{
+  "id": "sawgrass-loom",
+  "category": "easy",
+  "overlays": [
+    "upgrade_not_taken",
+    "date_arithmetic"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Miami to Madrid on the evening of September 14th for the partner universities' registrars meeting, which starts on the 16th. Economy is fine for this one, the cheapest you can find.",
+  "trip": {
+    "traveller_name": "Elena Navarro",
+    "traveller_title": "Associate Registrar",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "MAD",
+    "travel_date": "2027-09-14",
+    "return_date": "",
+    "booking_date": "2027-07-26",
+    "business_starts": "2027-09-16 09:00",
+    "purpose": "Registrars meeting of the partner universities in Madrid",
+    "purpose_kind": "MEETING",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": true,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Monica Reyes",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "VICE_PRESIDENT",
+        "name": "VP Daniel Cho",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as vice president"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "MAD",
+        "date": "2027-09-14",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "american": {
+            "carrier": "AA",
+            "depart": "16:40"
+          },
+          "iberia": {
+            "carrier": "IB",
+            "depart": "18:05"
+          }
+        },
+        "offers": [
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 73500
+          },
+          {
+            "slot": "american-business",
+            "flight": "american",
+            "cabin": "BUSINESS",
+            "fare_cents": 410000
+          },
+          {
+            "slot": "iberia-economy",
+            "flight": "iberia",
+            "cabin": "ECONOMY",
+            "fare_cents": 69000
+          },
+          {
+            "slot": "iberia-business",
+            "flight": "iberia",
+            "cabin": "BUSINESS",
+            "fare_cents": 380000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "iberia-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE",
+      "SUPERVISOR",
+      "VICE_PRESIDENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "DEFINITIONS",
+      "INTERNATIONAL_TRAVEL",
+      "POLICY",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        47,
+        49
+      ],
+      "sha256": "aaf878b5bdbe0476fbe3aa8b0b1315a50c4761853a13235c772161866c434f1a",
+      "quote": "Travelers are to exercise prudency when making travel reservations by always selecting the lowest fares available.",
+      "why": "the general duty: the lowest fares available"
+    },
+    {
+      "lines": [
+        233,
+        235
+      ],
+      "sha256": "1fa55c7751398a9d6408c5846757eccd0a665b2dcea5e9bd6a098ab57bbc98d2",
+      "quote": "Booking: International Travel can be accommodated online through the University Travel Portal or through a Travel Incorporated agent. Travelers or Travel Assistants should ensure that they have reviewed the International Travel Approval policy and received the proper approvals prior to booking. The University",
+      "why": "international travel needs the International Travel Approval policy's approvals"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        122,
+        122
+      ],
+      "quote": "First Class/Business Class ticket for flight under 8 hours",
+      "why": "a cabin the traveller does not ask for"
+    }
+  ],
+  "design_notes": "Overnight nonstops of 540 scheduled minutes, landing on the 15th. The traveller asks for the cheapest economy fare; the business cabin is not taken. The international approvals are on file (lines 233-235). Book Iberia at $690."
+}

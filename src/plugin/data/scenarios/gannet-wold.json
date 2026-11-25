@@ -1,0 +1,187 @@
+{
+  "id": "gannet-wold",
+  "category": "multi_rule",
+  "overlays": [
+    "multi_leg",
+    "dearer_option"
+  ],
+  "twin_of": "anhinga-dell",
+  "twin_fact": "layover 85 or 90 minutes (the connection lands 120 or 125 minutes after the nonstop)",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Miami to Salt Lake City on November 2nd for the research administrators' training, which starts the next morning. I'd prefer the nonstop.",
+  "trip": {
+    "traveller_name": "Lauren Kim",
+    "traveller_title": "Grants Administrator, Office of Research",
+    "university_role": "STAFF",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "SLC",
+    "travel_date": "2027-11-02",
+    "return_date": "",
+    "booking_date": "2027-10-04",
+    "business_starts": "2027-11-03 09:00",
+    "purpose": "Research administrators' training in Salt Lake City",
+    "purpose_kind": "CONFERENCE",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "ECONOMY",
+    "requested_routing": "NONSTOP",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Brian Walsh",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "VICE_PRESIDENT",
+        "name": "VP Steven Park",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as vice president"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "SLC",
+        "date": "2027-11-02",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "nonstop": {
+            "carrier": "AA",
+            "depart": "07:30",
+            "minutes": [
+              320
+            ]
+          },
+          "atlanta": {
+            "carrier": "DL",
+            "via": [
+              "ATL"
+            ],
+            "depart": "07:30",
+            "minutes": [
+              110,
+              245
+            ],
+            "layovers": [
+              90
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "nonstop-economy",
+            "flight": "nonstop",
+            "cabin": "ECONOMY",
+            "fare_cents": 58500
+          },
+          {
+            "slot": "atlanta-economy",
+            "flight": "atlanta",
+            "cabin": "ECONOMY",
+            "fare_cents": 32500
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "atlanta-economy",
+      "nonstop-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ALTERNATE_ROUTE_TOO_EXPENSIVE",
+      "ALTERNATE_ROUTE_WITHIN_MARGIN",
+      "CONNECTION_TOO_LONG",
+      "COST_SAVINGS",
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE",
+      "SUPERVISOR",
+      "VICE_PRESIDENT"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "DEFINITIONS",
+      "POLICY",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        149,
+        150
+      ],
+      "sha256": "8286d94d2d08b8e768c7811ff1912cd094cbf8e0a0146af9a848790681fdea36",
+      "quote": "Connecting Flights: Connecting flights should be considered if fare savings exceeds $200 and does not increase travel time by more than two hours or if no other flight is available.",
+      "why": "connections are considered when they save more than $200 and add no more than two hours"
+    },
+    {
+      "lines": [
+        120,
+        120
+      ],
+      "sha256": "567328e72af80e5a3dea1f469091e382d8311517c6ac2e9c60b04f804dffda8c",
+      "quote": "Airfare that is $200 over the lowest logical airfare",
+      "why": "a fare $200 over the lowest logical airfare needs a business reason"
+    },
+    {
+      "lines": [
+        126,
+        127
+      ],
+      "sha256": "7912d5d087122cf16f8e85adff7ffe1f4adc6752eadb2122ad279e16a31d0a05",
+      "quote": "An appropriate business reason will be required when booking:",
+      "why": "the lead-in of the three bullets printed above it"
+    },
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The connection saves $260 but lands 125 minutes after the nonstop: more than two hours, outside the test of lines 149-150, so the requested nonstop may be the lowest logical fare; it is also more than $200 over the cheaper connection (line 120). Both readings are defensible: the nonstop and the connection are both accepted."
+}

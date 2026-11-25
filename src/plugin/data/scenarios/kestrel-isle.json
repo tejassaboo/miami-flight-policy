@@ -1,0 +1,241 @@
+{
+  "id": "kestrel-isle",
+  "category": "multi_rule",
+  "overlays": [
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "The dean asked me last night to present our proposal to the foundation board in Los Angeles tomorrow, March 24th, at 4 pm. I've checked: economy is sold out on every flight that lands before then. Please book business on whatever gets me there in time.",
+  "trip": {
+    "traveller_name": "Dr. Sofia Alvarez",
+    "traveller_title": "Professor, Public Health Sciences",
+    "university_role": "FACULTY",
+    "passenger": "TRAVELLER",
+    "accompanies": "",
+    "companion_contribution": "",
+    "origin": "MIA",
+    "destination": "LAX",
+    "travel_date": "2027-03-24",
+    "return_date": "",
+    "booking_date": "2027-03-23",
+    "business_starts": "2027-03-24 16:00",
+    "purpose": "Proposal presentation to a foundation board in Los Angeles",
+    "purpose_kind": "MEETING",
+    "funding": "Department operating budget",
+    "personal_days": "",
+    "requested_cabin": "BUSINESS",
+    "requested_routing": "ANY",
+    "requested_airline": "",
+    "desired_departure": "",
+    "stated_reason": "Economy is sold out on every flight that lands before my 4 pm presentation",
+    "abroad_approvals_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Prof. Alan Brooks",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as supervisor"
+      },
+      {
+        "role": "DEAN",
+        "name": "Dean Ruth Okafor",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as dean"
+      },
+      {
+        "role": "FACULTY_AFFAIRS",
+        "name": "Dr. Helen Marsh",
+        "subject": "TRIP",
+        "covers": "Approves the traveller's trip in advance, as Faculty Affairs"
+      }
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "MIA",
+        "destination": "LAX",
+        "date": "2027-03-24",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "dawn": {
+            "carrier": "AA",
+            "depart": "07:00",
+            "minutes": [
+              330
+            ]
+          },
+          "morning": {
+            "carrier": "AA",
+            "depart": "09:30",
+            "minutes": [
+              330
+            ]
+          },
+          "late-morning": {
+            "carrier": "DL",
+            "depart": "11:00",
+            "minutes": [
+              330
+            ]
+          },
+          "afternoon": {
+            "carrier": "AA",
+            "depart": "15:30",
+            "minutes": [
+              330
+            ]
+          },
+          "evening": {
+            "carrier": "AA",
+            "depart": "17:45",
+            "minutes": [
+              330
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "dawn-economy",
+            "flight": "dawn",
+            "cabin": "ECONOMY",
+            "fare_cents": 38900,
+            "seats": false
+          },
+          {
+            "slot": "dawn-business",
+            "flight": "dawn",
+            "cabin": "BUSINESS",
+            "fare_cents": 149000
+          },
+          {
+            "slot": "morning-economy",
+            "flight": "morning",
+            "cabin": "ECONOMY",
+            "fare_cents": 36500,
+            "seats": false
+          },
+          {
+            "slot": "morning-business",
+            "flight": "morning",
+            "cabin": "BUSINESS",
+            "fare_cents": 152000
+          },
+          {
+            "slot": "late-morning-economy",
+            "flight": "late-morning",
+            "cabin": "ECONOMY",
+            "fare_cents": 35200,
+            "seats": false
+          },
+          {
+            "slot": "late-morning-business",
+            "flight": "late-morning",
+            "cabin": "BUSINESS",
+            "fare_cents": 138000
+          },
+          {
+            "slot": "afternoon-economy",
+            "flight": "afternoon",
+            "cabin": "ECONOMY",
+            "fare_cents": 34500
+          },
+          {
+            "slot": "afternoon-business",
+            "flight": "afternoon",
+            "cabin": "BUSINESS",
+            "fare_cents": 129000
+          },
+          {
+            "slot": "evening-economy",
+            "flight": "evening",
+            "cabin": "ECONOMY",
+            "fare_cents": 31900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "late-morning-business"
+    ],
+    "cabins": [
+      "BUSINESS"
+    ],
+    "reason_codes": [
+      "BUSINESS_REASON_DOCUMENTED",
+      "LOWEST_FARE",
+      "NO_ECONOMY_SEATS_URGENT"
+    ],
+    "approvers": [
+      "DEAN",
+      "FACULTY_AFFAIRS",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIR_TRAVEL",
+      "PROCEDURE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        122,
+        122
+      ],
+      "sha256": "3546737addd42f7e189a37f517549a6a854f7239c4f03e2b308a75db70c6f267",
+      "quote": "First Class/Business Class ticket for flight under 8 hours",
+      "why": "business or first under 8 hours needs a business reason"
+    },
+    {
+      "lines": [
+        126,
+        127
+      ],
+      "sha256": "7912d5d087122cf16f8e85adff7ffe1f4adc6752eadb2122ad279e16a31d0a05",
+      "quote": "An appropriate business reason will be required when booking:",
+      "why": "the lead-in of the three bullets printed above it"
+    },
+    {
+      "lines": [
+        117,
+        118
+      ],
+      "sha256": "740914266443ab8b09c3c9709b0a7e83be67e4f1154d110c37519ddbff8dea5e",
+      "quote": "When booking through the University online portal, Concur, or with a Travel Incorporated agent, the Lowest Logical Fare (\"LLS\") at the time of the booking will be offered. Travelers are expected to make",
+      "why": "the portal offers the Lowest Logical Fare"
+    },
+    {
+      "lines": [
+        17,
+        19
+      ],
+      "sha256": "7973c9b6ef1922e53eb0642ecef0f5f28123245dcf1e06d6f12f563a1ba1dd9d",
+      "quote": "All University-related travel must receive prior approval by the faculty or staff member's supervisor and the supervising dean or vice president. For faculty, approval must also be received from Faculty Affairs",
+      "why": "prior approval by the supervisor and the dean or VP; for faculty also Faculty Affairs"
+    },
+    {
+      "lines": [
+        34,
+        37
+      ],
+      "sha256": "1f516954b893e6a8e0436245f038930e9331ad6fb8b962224580d524020fd54d",
+      "quote": "the travel should be discussed and authorized by the supervisor prior to making travel arrangements. When business travel is required and authorized, airfare reservations must be made through the University of Miami Travel Portal",
+      "why": "the supervisor authorizes the trip before booking"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The presentation starts at 16:00 in Los Angeles. The 07:00, 09:30 and 11:00 flights (330 minutes) land at 09:30, 12:00 and 13:30 local; their economy seats are sold out. The 15:30 and 17:45 flights land after 16:00. Business class for a flight under 8 hours needs an appropriate business reason (lines 122, 126-127): no economy seat reaches the presentation, which is one. The lowest fare that lands in time is Delta business at $1,380.",
+  "answer_key_inputs": {
+    "reason_kind": "economy_sold_out"
+  }
+}
