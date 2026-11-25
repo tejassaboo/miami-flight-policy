@@ -107,6 +107,7 @@
     "reason_codes": [
       "ALTERNATE_ROUTE_TOO_EXPENSIVE",
       "ALTERNATE_ROUTE_WITHIN_MARGIN",
+      "BUSINESS_REASON_MISSING",
       "COST_SAVINGS",
       "LOWEST_FARE"
     ],

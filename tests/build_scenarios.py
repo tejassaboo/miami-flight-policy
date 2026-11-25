@@ -38,6 +38,8 @@ COVID = keep(17, 19, "All University-related travel must receive prior approval 
 AUTHORIZED = keep(34, 37, "the travel should be discussed and authorized by the supervisor prior to making travel "
                   "arrangements. When business travel is required and authorized, airfare reservations must be made "
                   "through the University of Miami Travel Portal", "the supervisor authorizes the trip before booking")
+SUPERVISOR_FIRST = keep(47, 48, "secure approval from appropriate supervisor(s) prior to committing University funds or "
+                        "incurring expenses", "approval from the supervisor before University funds are committed")
 SCOPE = keep(26, 31, None, "the policy covers travel on University business")
 PRUDENT = keep(47, 49, "Travelers are to exercise prudency when making travel reservations by always selecting the "
                "lowest fares available.", "the general duty: the lowest fares available")
@@ -163,6 +165,8 @@ PREAMBLE = ["POLICY", "PURPOSE", "SCOPE"]
 LOW_KEEP = [WINDOW, LLF, PRUDENT]
 APPROVED = [COVID, AUTHORIZED]
 CLEAR_CONNECTION = ["ALTERNATE_ROUTE_TOO_EXPENSIVE", "ALTERNATE_ROUTE_WITHIN_MARGIN", "COST_SAVINGS", "LOWEST_FARE"]
+# A declined nonstop request: more than $200 over, the nonstop needs a business reason a preference is not (audit).
+DECLINED_NONSTOP = sorted([*CLEAR_CONNECTION, "BUSINESS_REASON_MISSING"])
 DECLINED = ["BUSINESS_REASON_MISSING", "LONG_FLIGHT_CONDITION_NOT_MET", "UPGRADE_NOT_ELIGIBLE"]
 PE_OK = ["FARE_WITHIN_TOLERANCE", "PREMIUM_ECONOMY_ALLOWED", "UPGRADE_WITHIN_FARE_MARGIN"]
 UNCLEAR = ["APPROVAL_REQUIRED", "UNCLEAR_POLICY_TEXT"]
@@ -414,7 +418,7 @@ def msp(connection_cents):
 
 scenario(
     "egret-sable", "boundary_twin", ["multi_leg"], MSP_REQUEST, msp_trip(), msp(27000),
-    expected("BOOK", ["atlanta-economy"], ["ECONOMY"], CLEAR_CONNECTION, roles_of(MSP_SIGNED), LOWEST),
+    expected("BOOK", ["atlanta-economy"], ["ECONOMY"], DECLINED_NONSTOP, roles_of(MSP_SIGNED), LOWEST),
     [CONNECT, OVER_200, REASON, WITHIN, LLF, *APPROVED],
     "The connection saves $201 (more than $200) and lands 95 minutes after the nonstop (not more than two hours): it "
     "should be considered (lines 149-150) and is the lowest logical fare; the nonstop is more than $200 over it and "
@@ -456,7 +460,7 @@ def slc(layover):
 
 scenario(
     "anhinga-dell", "multi_rule", ["multi_leg"], SLC_REQUEST, slc_trip(), slc(85),
-    expected("BOOK", ["atlanta-economy"], ["ECONOMY"], CLEAR_CONNECTION, roles_of(SLC_SIGNED), LOWEST),
+    expected("BOOK", ["atlanta-economy"], ["ECONOMY"], DECLINED_NONSTOP, roles_of(SLC_SIGNED), LOWEST),
     [CONNECT, OVER_200, REASON, WITHIN, LLF, *APPROVED],
     "The connection saves $260 and lands exactly 120 minutes after the nonstop (elapsed 440 against 320): not more than "
     "two hours, so it should be considered (lines 149-150) and is the lowest logical fare; the nonstop is $260 over it "
@@ -466,8 +470,8 @@ scenario(
 scenario(
     "gannet-wold", "multi_rule", ["multi_leg", "dearer_option"], SLC_REQUEST, slc_trip(), slc(90),
     expected("BOOK", ["atlanta-economy", "nonstop-economy"], ["ECONOMY"],
-             ["ALTERNATE_ROUTE_TOO_EXPENSIVE", "ALTERNATE_ROUTE_WITHIN_MARGIN", "CONNECTION_TOO_LONG", "COST_SAVINGS",
-              "LOWEST_FARE"], roles_of(SLC_SIGNED), LOWEST),
+             ["ALTERNATE_ROUTE_TOO_EXPENSIVE", "ALTERNATE_ROUTE_WITHIN_MARGIN", "BUSINESS_REASON_MISSING",
+              "CONNECTION_TOO_LONG", "COST_SAVINGS", "LOWEST_FARE"], roles_of(SLC_SIGNED), LOWEST),
     [CONNECT, OVER_200, REASON, LLF, *APPROVED],
     "The connection saves $260 but lands 125 minutes after the nonstop: more than two hours, outside the test of lines "
     "149-150, so the requested nonstop may be the lowest logical fare; it is also more than $200 over the cheaper "
@@ -503,7 +507,7 @@ scenario(
         offer("evening-economy", "evening", "ECONOMY", 31900),
     ]),
     expected("BOOK", ["late-morning-business"], ["BUSINESS"],
-             ["BUSINESS_REASON_DOCUMENTED", "LOWEST_FARE", "NO_ECONOMY_SEATS_URGENT"], roles_of(signed), CABIN),
+             ["BUSINESS_REASON_DOCUMENTED", "LOWEST_FARE", "NO_ECONOMY_SEATS_URGENT"], roles_of(signed), LOWEST),
     [BUS_BULLET, REASON, LLF, *APPROVED],
     "The presentation starts at 16:00 in Los Angeles. The 07:00, 09:30 and 11:00 flights (330 minutes) land at 09:30, "
     "12:00 and 13:30 local; their economy seats are sold out. The 15:30 and 17:45 flights land after 16:00. Business "
@@ -661,7 +665,7 @@ scenario(
     ],
     expected("BOOK", ["friday-jetblue"], ["ECONOMY"], ["LOWEST_FARE", "PERSONAL_EXTENSION_COMPARISON",
                                                        "PERSONAL_TRAVEL_NOT_COVERED"],
-             roles_of(signed), CABIN),
+             roles_of(signed), LOWEST),
     [PERSONAL, COMMENCE, *APPROVED],
     "The trip is extended for personal travel. Business trips normally commence one day before the conference (lines "
     "135-136): Monday, November 30. Lines 139-144: a comparison non-refundable coach quote for the business dates "
@@ -684,7 +688,8 @@ scenario(
          funding="Charged with his wife's trip to the lab's operating budget", desired_departure="09:00",
          sign_offs=signed),
     LUMEN_WORLD,
-    expected("REFUSE", [], ["NONE"], ["COMPANION_NOT_COVERED", "PERSONAL_TRAVEL_NOT_COVERED"], roles_of(signed),
+    expected("REFUSE", [], ["NONE"], ["COMPANION_NOT_COVERED", "OUTSIDE_POLICY_SCOPE", "PERSONAL_TRAVEL_NOT_COVERED"],
+             roles_of(signed),
              ["BOOKING_FOR_OTHERS", "DEFINITIONS"]),
     [COMPANION, COMPANION_DEF],
     "Lines 269-272: the expenses of a spouse accompanying the business traveller are not payable using University "
@@ -709,7 +714,7 @@ scenario(
         offer("united-economy", "united", "ECONOMY", 25900),
     ]),
     expected("REFUSE", [], ["NONE"], ["OUTSIDE_POLICY_SCOPE", "PERSONAL_TRAVEL_NOT_COVERED"], ["NONE"],
-             ["DEFINITIONS", "POLICY", "PURPOSE", "SCOPE"]),
+             ["AIR_TRAVEL", "DEFINITIONS", "POLICY", "PROCEDURE", "PURPOSE", "SCOPE"]),
     [SCOPE, ALLOWABLE, FUNDS],
     "A wedding is personal travel, not University business. Lines 26-31: the policy covers travel on behalf of the "
     "University; lines 68-70: an allowable expense is incurred for the primary benefit of university business; lines "
@@ -785,15 +790,14 @@ scenario(
                             ("each flight is measured alone: all under 4 hours, so premium economy needs a reason "
                              "the traveller does not give: economy")]})
 
-signed = approvals("FACULTY", ["Prof. Diane Cole", "Dean Paul Grant", "Dr. Helen Marsh"])[:2]
 scenario(
     "thistle-pier", "flag", ["approval_required", "outside_air_section"],
     "Miami to Washington Dulles on January 25th, please, for the research symposium at Georgetown the next morning. "
-    "My chair and the dean have both signed off.",
+    "I haven't sent the trip to my chair for approval yet, but please book it now while the fares are low.",
     trip(traveller_name="Dr. Samuel Adeyemi", traveller_title="Assistant Professor, Political Science",
          university_role="FACULTY", destination="IAD", travel_date="2027-01-25", booking_date="2026-12-28",
          business_starts="2027-01-26 09:00", purpose="Research symposium at Georgetown University",
-         purpose_kind="CONFERENCE", sign_offs=signed),
+         purpose_kind="CONFERENCE", sign_offs=[]),
     search("MIA", "IAD", "2027-01-25", {
         "united": {"carrier": "UA", "depart": "07:50"},
         "american": {"carrier": "AA", "depart": "10:15"},
@@ -803,14 +807,16 @@ scenario(
         offer("american-economy", "american", "ECONOMY", 21900),
         offer("united-later-economy", "united-later", "ECONOMY", 24800),
     ]),
-    expected("FLAG_FOR_APPROVAL", ["american-economy"], ["ECONOMY"], ["APPROVAL_REQUIRED"], ["FACULTY_AFFAIRS"],
-             PREAMBLE),
-    [COVID, AUTHORIZED, LLF],
-    "Lines 17-19: all University-related travel must receive prior approval by the supervisor and the supervising dean "
-    "or vice president, and for faculty, approval must also be received from Faculty Affairs. The chair (supervisor) "
-    "and dean approved; Faculty Affairs has not. Hold the lowest fare, American at $219, for Faculty Affairs.",
+    expected("FLAG_FOR_APPROVAL", ["american-economy"], ["ECONOMY"], ["APPROVAL_REQUIRED"],
+             ["DEAN", "FACULTY_AFFAIRS", "SUPERVISOR", "VICE_PRESIDENT"], sorted([*PREAMBLE, "DEFINITIONS"])),
+    [AUTHORIZED, SUPERVISOR_FIRST, COVID, LLF],
+    "Lines 34-37 and 47-48: the supervisor authorizes the trip, and approval from the appropriate supervisor is secured "
+    "before University funds are committed; nothing is on file, and the chair has not been asked. Lines 17-19 (COVID-19 "
+    "guidance) also ask for the supervising dean or vice president and, for faculty, Faculty Affairs; on any reading "
+    "the supervisor's approval is awaited. Hold the lowest fare, American at $219.",
     flag_twins=["mangrove-lute", "heron-gable"],
-    ambiguity="none: an approval from Faculty Affairs is required for faculty travel and is missing; the text is clear")
+    ambiguity="none: the supervisor's prior authorization (lines 34-37, 47-48) is missing on every reading, whether or "
+    "not the COVID-19 approvals of lines 17-19 still apply")
 
 
 def main():

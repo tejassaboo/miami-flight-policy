@@ -85,8 +85,10 @@
       "NONE"
     ],
     "clauses": [
+      "AIR_TRAVEL",
       "DEFINITIONS",
       "POLICY",
+      "PROCEDURE",
       "PURPOSE",
       "SCOPE"
     ],

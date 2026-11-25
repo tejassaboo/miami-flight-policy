@@ -198,6 +198,9 @@ def economy_choice(trip, economy):
         # handbook's own test: the connection. LOWEST_FARE stays beside the specific codes (lead's decision).
         reasons = [ReasonCode.COST_SAVINGS, ReasonCode.ALTERNATE_ROUTE_TOO_EXPENSIVE, ReasonCode.LOWEST_FARE,
                    ReasonCode.ALTERNATE_ROUTE_WITHIN_MARGIN]
+        if trip.requested_routing == Routing.NONSTOP:
+            # The requested nonstop is declined because, more than $200 over, it needs a business reason (audit).
+            reasons.append(ReasonCode.BUSINESS_REASON_MISSING)
         return ([connection], reasons, [],
                 (f"lines 149-150: the connection saves {savings} cents (more than $200) and adds {added} minutes (not "
                  "more than two hours), so it is the lowest logical fare; the nonstop is more than $200 over it "
@@ -212,7 +215,8 @@ def economy_choice(trip, economy):
                  "considered; the requested nonstop is within $200 of the lowest fare, within policy (lines 123, "
                  "128-131)"))
     reasons = [ReasonCode.CONNECTION_TOO_LONG, ReasonCode.LOWEST_FARE, ReasonCode.COST_SAVINGS,
-               ReasonCode.ALTERNATE_ROUTE_TOO_EXPENSIVE, ReasonCode.ALTERNATE_ROUTE_WITHIN_MARGIN]
+               ReasonCode.ALTERNATE_ROUTE_TOO_EXPENSIVE, ReasonCode.ALTERNATE_ROUTE_WITHIN_MARGIN,
+               ReasonCode.BUSINESS_REASON_MISSING]
     return ([connection, nonstop], reasons, [],
             (f"lines 149-150: the connection saves {savings} cents but adds {added} minutes (more than two hours), "
              "outside the test, so the requested nonstop may be the logical fare; since the nonstop is also more "
@@ -237,7 +241,7 @@ def solve(trip, offers, hidden):
             raise ValueError("a companion with a position but no contribution, or the reverse, is not modelled")
         if not position:
             return answer(Decision.REFUSE, [], [ReasonCode.COMPANION_NOT_COVERED,
-                                                ReasonCode.PERSONAL_TRAVEL_NOT_COVERED],
+                                                ReasonCode.PERSONAL_TRAVEL_NOT_COVERED, ReasonCode.OUTSIDE_POLICY_SCOPE],
                           unused, [Clause.BOOKING_FOR_OTHERS, Clause.DEFINITIONS],
                           "Lines 269-272: the expenses of a spouse, family member or other person accompanying the "
                           "business traveller are not payable using University Funds unless that person has a "
@@ -249,7 +253,7 @@ def solve(trip, offers, hidden):
         if trip.passenger != Passenger.TRAVELLER:
             raise ValueError("a personal trip by a companion is not modelled")
         return answer(Decision.REFUSE, [], [ReasonCode.PERSONAL_TRAVEL_NOT_COVERED, ReasonCode.OUTSIDE_POLICY_SCOPE],
-                      unused, [*PREAMBLE_CLAUSES, Clause.DEFINITIONS],
+                      unused, [*PREAMBLE_CLAUSES, *LOWEST_CLAUSES],
                       "Lines 26-31 and 43-46: the policy covers travel on University business; lines 68-70: an "
                       "allowable expense is incurred for the primary benefit of university business; lines "
                       "106-107: University Funds. A personal trip is not University business, so the University "
@@ -261,8 +265,11 @@ def solve(trip, offers, hidden):
         missing.append(Approver.DEAN)
     if trip.university_role == UniversityRole.FACULTY and Approver.FACULTY_AFFAIRS not in roles:
         missing.append(Approver.FACULTY_AFFAIRS)
-    if missing not in ([], [Approver.FACULTY_AFFAIRS]):
-        raise ValueError(f"missing trip approvals {missing} are not modelled")
+    if missing and roles:
+        # Lines 17-19 are COVID-19 guidance that a reader may take as lapsed, so a hold for a missing dean, vice
+        # president or Faculty Affairs approval alone would have two answers (audit). Only a trip with nothing on
+        # file is modelled: the supervisor's authorization (lines 34-37, 47-48) is missing on every reading.
+        raise ValueError(f"missing trip approvals {missing} beside approvals on file are not modelled")
     countries = {trip.origin.country, trip.destination.country}
     abroad = not countries <= set(DOMESTIC_COUNTRIES)
     if abroad != trip.abroad_approvals_on_file:
@@ -284,14 +291,14 @@ def solve(trip, offers, hidden):
                                   "approvals for international travel (lines 233-235) are not needed.")
     if missing:
         if result["decision"] != Decision.BOOK or result["reason_codes"] != [ReasonCode.LOWEST_FARE]:
-            raise ValueError("a missing Faculty Affairs approval on anything but a plain lowest-fare booking is not "
-                             "modelled")
+            raise ValueError("a missing trip approval on anything but a plain lowest-fare booking is not modelled")
+        awaited = [*missing, Approver.VICE_PRESIDENT] if Approver.DEAN in missing else missing
         result.update(decision=Decision.FLAG_FOR_APPROVAL, reason_codes=[ReasonCode.APPROVAL_REQUIRED],
-                      approvers=[Approver.FACULTY_AFFAIRS], clauses=by_value(PREAMBLE_CLAUSES))
-        result["explanation"] = ("Lines 17-19: all University-related travel must receive prior approval by the "
-                                 "supervisor and the supervising dean or vice president, and for faculty also from "
-                                 "Faculty Affairs. The supervisor and dean have approved; Faculty Affairs has not. "
-                                 "Hold the fare the policy would buy: " + result["explanation"])
+                      approvers=by_value(awaited), clauses=by_value([*PREAMBLE_CLAUSES, Clause.DEFINITIONS]))
+        result["explanation"] = ("Lines 34-37 and 47-48: the supervisor authorizes the trip and approves it before "
+                                 "University funds are committed; nothing is on file yet. Lines 17-19 (COVID-19 "
+                                 "guidance) also ask for the supervising dean or vice president and, for faculty, "
+                                 "Faculty Affairs. Hold the fare the policy would buy: " + result["explanation"])
     return result
 
 
@@ -432,7 +439,7 @@ def business(trip, route, candidates, seated, economy, approvers, kind, abroad):
         if not coach or any(offer.seats_available for offer in coach) or trip.desired_departure:
             raise ValueError("a sold-out case needs every economy seat landing in time sold out")
         return answer(Decision.BOOK, upgrade, [ReasonCode.NO_ECONOMY_SEATS_URGENT, ReasonCode.BUSINESS_REASON_DOCUMENTED,
-                                              ReasonCode.LOWEST_FARE], approvers, CABIN_CLAUSES,
+                                              ReasonCode.LOWEST_FARE], approvers, [*CABIN_CLAUSES, *LOWEST_CLAUSES],
                       "Lines 122, 126-127: business class for a flight under 8 hours needs an appropriate business "
                       "reason. Every economy seat on the flights that land before the work begins is sold out, which "
                       "is such a reason; the lowest available fare that lands in time (lines 115-118) is this "
@@ -470,7 +477,7 @@ def personal(trip, offers, economy, approvers):
         raise ValueError("the comparison fare must be on a pinned search on the business day")
     lesser = min(wanted[0].fare_cents, quote[0].fare_cents)
     return answer(Decision.BOOK, wanted, [ReasonCode.PERSONAL_EXTENSION_COMPARISON, ReasonCode.LOWEST_FARE,
-                                              ReasonCode.PERSONAL_TRAVEL_NOT_COVERED], approvers, CABIN_CLAUSES,
+                                              ReasonCode.PERSONAL_TRAVEL_NOT_COVERED], approvers, LOWEST_CLAUSES,
                   f"Lines 135-144: business trips normally commence one day before the conference ({business_day}); "
                   "the traveller extends the trip for personal days, so the flight they will take is booked at its "
                   f"lowest fare ({wanted[0].fare_cents} cents) with a comparison non-refundable coach quote for "

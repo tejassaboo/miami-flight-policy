@@ -44,13 +44,16 @@ with room for three or four extra tool calls (for example the comparison search 
 - **Trip approvals.** Lines 17-19 require prior approval of all University travel by the supervisor and the
   supervising dean or vice president, and for faculty also by Faculty Affairs. Every trip record holds the approvals
   it has; a booking accepts each of those roles and `NONE` (template rule 4'), a refusal accepts `NONE` and the
-  roles on file (rule 4(b)), and a hold accepts only the awaited role.
+  roles on file (rule 4(b)), and a hold accepts only the awaited roles. Lines 17-19 are COVID-19 guidance a reader
+  may take as lapsed, so no answer depends on them alone: the one approval hold (`thistle-pier`) has nothing on file,
+  and the supervisor's authorization of lines 34-37 and 47-48 is awaited on every reading.
 - **Reasons on a declined request.** The task instructions say that when the booking is not what the traveller asked
   for, the reason code gives why the request is declined. A declined premium economy or business cabin accepts
   `BUSINESS_REASON_MISSING`, `UPGRADE_NOT_ELIGIBLE` and `LONG_FLIGHT_CONDITION_NOT_MET`, not `LOWEST_FARE`
   (`cypress-ember`, `osprey-quill`, `manatee-reed`); the Fly America case does not accept `LOWEST_FARE`
   (`pompano-ridge`). A nonstop declined because the connection passes the handbook's own savings and time test
-  accepts `LOWEST_FARE` beside the specific codes (`egret-sable`, `anhinga-dell`), and so does the airline wish
+  accepts `LOWEST_FARE` beside the specific codes and `BUSINESS_REASON_MISSING` (the nonstop, more than $200 over,
+  needs a business reason; `egret-sable`, `anhinga-dell`, `gannet-wold`), and so does the airline wish
   declined on the $200 tolerance of the lowest airfare (`marlin-cove`).
 - **Hidden facts** (`answer_key_inputs`, never shown): how the traveller's stated reason reads (`cypress-ember`
   personal, `kestrel-isle` economy sold out, `vesper-tide` unclear) and that the NSF grant of `pompano-ridge` is a
@@ -63,24 +66,24 @@ with room for three or four extra tool calls (for example the comparison search 
 | `mangrove-lute` | easy | BOOK (american-premium; PREMIUM_ECONOMY) | FARE_WITHIN_TOLERANCE or PREMIUM_ECONOMY_ALLOWED or UPGRADE_WITHIN_FARE_MARGIN | DEAN or FACULTY_AFFAIRS or NONE or SUPERVISOR | AIR_TRAVEL or PROCEDURE (121, 126-127, 123, 128-129, 17-19, 34-37) |
 | `pelican-arch` | easy | BOOK (atlanta-economy; ECONOMY) | ALTERNATE_ROUTE_TOO_EXPENSIVE or ALTERNATE_ROUTE_WITHIN_MARGIN or COST_SAVINGS or LOWEST_FARE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 117-118, 47-49, 17-19, 34-37) |
 | `sawgrass-loom` | easy | BOOK (iberia-economy; ECONOMY) | LOWEST_FARE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or INTERNATIONAL_TRAVEL or POLICY or PROCEDURE (117-118, 47-49, 233-235, 17-19, 34-37) |
-| `egret-sable` | boundary_twin | BOOK (atlanta-economy; ECONOMY) | ALTERNATE_ROUTE_TOO_EXPENSIVE or ALTERNATE_ROUTE_WITHIN_MARGIN or COST_SAVINGS or LOWEST_FARE | DEAN or NONE or SUPERVISOR | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 120, 126-127, 128-129, 117-118, 17-19, 34-37) |
+| `egret-sable` | boundary_twin | BOOK (atlanta-economy; ECONOMY) | ALTERNATE_ROUTE_TOO_EXPENSIVE or ALTERNATE_ROUTE_WITHIN_MARGIN or BUSINESS_REASON_MISSING or COST_SAVINGS or LOWEST_FARE | DEAN or NONE or SUPERVISOR | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 120, 126-127, 128-129, 117-118, 17-19, 34-37) |
 | `ibis-quarry` | boundary_twin | BOOK (united-premium; PREMIUM_ECONOMY) | FARE_WITHIN_TOLERANCE or PREMIUM_ECONOMY_ALLOWED or UPGRADE_WITHIN_FARE_MARGIN | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or PROCEDURE (121, 126-127, 123, 128-129, 17-19, 34-37) |
 | `manatee-reed` | boundary_twin | BOOK (latam-economy; ECONOMY) | BUSINESS_REASON_MISSING or LONG_FLIGHT_CONDITION_NOT_MET or UPGRADE_NOT_ELIGIBLE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or INTERNATIONAL_TRAVEL or POLICY or PROCEDURE (122, 126-127, 117-118, 47-49, 233-235, 17-19, 34-37) |
 | `osprey-quill` | boundary_twin | BOOK (united-economy; ECONOMY) | BUSINESS_REASON_MISSING or LONG_FLIGHT_CONDITION_NOT_MET or UPGRADE_NOT_ELIGIBLE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (121, 126-127, 117-118, 47-49, 17-19, 34-37) |
 | `snook-larder` | boundary_twin | BOOK (nonstop-economy; ECONOMY) | ALTERNATE_ROUTE_WITHIN_MARGIN or FARE_WITHIN_TOLERANCE or LOWEST_FARE | DEAN or NONE or SUPERVISOR | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 123, 128-129, 117-118, 17-19, 34-37) |
 | `tarpon-mesa` | boundary_twin | BOOK (american-business; BUSINESS) | FARE_WITHIN_TOLERANCE or INTERNATIONAL_LONG_FLIGHT or LONG_FLIGHT_APPROVED or UPGRADE_WITHIN_FARE_MARGIN | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or INTERNATIONAL_TRAVEL or PROCEDURE (122, 126-127, 123, 128-129, 233-235, 17-19, 34-37) |
-| `anhinga-dell` | multi_rule | BOOK (atlanta-economy; ECONOMY) | ALTERNATE_ROUTE_TOO_EXPENSIVE or ALTERNATE_ROUTE_WITHIN_MARGIN or COST_SAVINGS or LOWEST_FARE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 120, 126-127, 128-129, 117-118, 17-19, 34-37) |
-| `gannet-wold` | multi_rule | BOOK (atlanta-economy or nonstop-economy; ECONOMY) | ALTERNATE_ROUTE_TOO_EXPENSIVE or ALTERNATE_ROUTE_WITHIN_MARGIN or CONNECTION_TOO_LONG or COST_SAVINGS or LOWEST_FARE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 120, 126-127, 117-118, 17-19, 34-37) |
-| `kestrel-isle` | multi_rule | BOOK (late-morning-business; BUSINESS) | BUSINESS_REASON_DOCUMENTED or LOWEST_FARE or NO_ECONOMY_SEATS_URGENT | DEAN or FACULTY_AFFAIRS or NONE or SUPERVISOR | AIR_TRAVEL or PROCEDURE (122, 126-127, 117-118, 17-19, 34-37) |
+| `anhinga-dell` | multi_rule | BOOK (atlanta-economy; ECONOMY) | ALTERNATE_ROUTE_TOO_EXPENSIVE or ALTERNATE_ROUTE_WITHIN_MARGIN or BUSINESS_REASON_MISSING or COST_SAVINGS or LOWEST_FARE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 120, 126-127, 128-129, 117-118, 17-19, 34-37) |
+| `gannet-wold` | multi_rule | BOOK (atlanta-economy or nonstop-economy; ECONOMY) | ALTERNATE_ROUTE_TOO_EXPENSIVE or ALTERNATE_ROUTE_WITHIN_MARGIN or BUSINESS_REASON_MISSING or CONNECTION_TOO_LONG or COST_SAVINGS or LOWEST_FARE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (149-150, 120, 126-127, 117-118, 17-19, 34-37) |
+| `kestrel-isle` | multi_rule | BOOK (late-morning-business; BUSINESS) | BUSINESS_REASON_DOCUMENTED or LOWEST_FARE or NO_ECONOMY_SEATS_URGENT | DEAN or FACULTY_AFFAIRS or NONE or SUPERVISOR | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (122, 126-127, 117-118, 17-19, 34-37) |
 | `lumen-bay` | multi_rule | BOOK (late-morning-economy; ECONOMY) | COMPANION_UNIVERSITY_ROLE or LOWEST_FARE or REQUESTED_TIME_WINDOW | DEAN or NONE or SUPERVISOR | AIR_TRAVEL or BOOKING_FOR_OTHERS or DEFINITIONS or POLICY or PROCEDURE (269-272, 115-116, 117-118, 17-19, 34-37) |
 | `brine-lattice` | hidden_clause | BOOK (midday-economy; ECONOMY) | LOWEST_FARE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or INTERNATIONAL_TRAVEL or POLICY or PROCEDURE (74-76, 233-235, 117-118, 47-49, 17-19, 34-37) |
 | `pompano-ridge` | hidden_clause | BOOK (american-economy; ECONOMY) | FLY_AMERICA_US_CARRIER_REQUIRED or NATIONAL_CARRIER_REQUIRED or OPEN_SKIES_AGREEMENT | DEAN or FACULTY_AFFAIRS or NONE or SUPERVISOR | DEFINITIONS or INTERNATIONAL_TRAVEL or POLICY (58-59, 233-235, 17-19, 34-37) |
 | `marlin-cove` | distractor | BOOK (delta-economy; ECONOMY) | BUSINESS_REASON_MISSING or LOWEST_FARE or LOYALTY_PROGRAM_PREFERENCE | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (120, 126-127, 128-129, 123, 117-118, 17-19, 34-37) |
-| `saffron-key` | distractor | BOOK (friday-jetblue; ECONOMY) | LOWEST_FARE or PERSONAL_EXTENSION_COMPARISON or PERSONAL_TRAVEL_NOT_COVERED | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or PROCEDURE (139-144, 135-136, 17-19, 34-37) |
-| `ochre-fen` | refusal | REFUSE (none; NONE) | OUTSIDE_POLICY_SCOPE or PERSONAL_TRAVEL_NOT_COVERED | NONE | DEFINITIONS or POLICY or PURPOSE or SCOPE (26-31, 68-70, 106-107) |
-| `wren-hollow` | refusal | REFUSE (none; NONE) | COMPANION_NOT_COVERED or PERSONAL_TRAVEL_NOT_COVERED | DEAN or NONE or SUPERVISOR | BOOKING_FOR_OTHERS or DEFINITIONS (269-272, 71-72) |
+| `saffron-key` | distractor | BOOK (friday-jetblue; ECONOMY) | LOWEST_FARE or PERSONAL_EXTENSION_COMPARISON or PERSONAL_TRAVEL_NOT_COVERED | NONE or SUPERVISOR or VICE_PRESIDENT | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE (139-144, 135-136, 17-19, 34-37) |
+| `ochre-fen` | refusal | REFUSE (none; NONE) | OUTSIDE_POLICY_SCOPE or PERSONAL_TRAVEL_NOT_COVERED | NONE | AIR_TRAVEL or DEFINITIONS or POLICY or PROCEDURE or PURPOSE or SCOPE (26-31, 68-70, 106-107) |
+| `wren-hollow` | refusal | REFUSE (none; NONE) | COMPANION_NOT_COVERED or OUTSIDE_POLICY_SCOPE or PERSONAL_TRAVEL_NOT_COVERED | DEAN or NONE or SUPERVISOR | BOOKING_FOR_OTHERS or DEFINITIONS (269-272, 71-72) |
 | `jasmine-shoal` | flag | FLAG_FOR_APPROVAL (atlanta-economy or atlanta-premium; ECONOMY or PREMIUM_ECONOMY) | APPROVAL_REQUIRED or UNCLEAR_POLICY_TEXT | EXECUTIVE_VICE_PRESIDENT or NOT_NAMED or TRAVEL_MANAGEMENT | AIR_TRAVEL or PROCEDURE (121, 126-127, 123, 102-104, 62-63, 17-19, 34-37) |
-| `thistle-pier` | flag | FLAG_FOR_APPROVAL (american-economy; ECONOMY) | APPROVAL_REQUIRED | FACULTY_AFFAIRS | POLICY or PURPOSE or SCOPE (17-19, 34-37, 117-118) |
+| `thistle-pier` | flag | FLAG_FOR_APPROVAL (american-economy; ECONOMY) | APPROVAL_REQUIRED | DEAN or FACULTY_AFFAIRS or SUPERVISOR or VICE_PRESIDENT | DEFINITIONS or POLICY or PURPOSE or SCOPE (34-37, 47-48, 17-19, 117-118) |
 | `vesper-tide` | flag | FLAG_FOR_APPROVAL (united-business or united-economy; BUSINESS or ECONOMY) | APPROVAL_REQUIRED or UNCLEAR_POLICY_TEXT | EXECUTIVE_VICE_PRESIDENT or NOT_NAMED or SUPERVISOR or TRAVEL_MANAGEMENT | AIR_TRAVEL or PROCEDURE (122, 126-127, 102-104, 62-63, 17-19, 34-37) |
 
 Mix (EDGE_CASES.md 5.2, 24 row): 5 easy, 6 boundary twins, 4 multi-rule, 2 hidden clause, 2 distractor, 2 refusal,
@@ -98,9 +101,10 @@ Each hold has clear twins on both sides:
 - **"flight under 4 hours"** (line 121): whether a connection is one flight or several. `jasmine-shoal` (only
   connections, each flight under 4 hours, each journey over); twins `ibis-quarry` (240-minute nonstop: premium
   economy) and `osprey-quill` (239: economy).
-- **Approval required.** `thistle-pier`: a professor's trip approved by the chair and the dean, but not by Faculty
-  Affairs (lines 17-19). Hold the lowest fare for `FACULTY_AFFAIRS`; twins `mangrove-lute` (faculty, all approvals on
-  file) and `heron-gable` (a student, no Faculty Affairs needed).
+- **Approval required.** `thistle-pier`: a professor who has not yet sent the trip to the chair for approval
+  (lines 34-37, 47-48; lines 17-19 add the dean and Faculty Affairs if the COVID-19 guidance still applies). Hold the
+  lowest fare for `SUPERVISOR` (or `DEAN`, `VICE_PRESIDENT`, `FACULTY_AFFAIRS`); twins `mangrove-lute` (faculty, all
+  approvals on file) and `heron-gable` (a student, approvals on file).
 
 Unclear holds accept `UNCLEAR_POLICY_TEXT` or `APPROVAL_REQUIRED`, the held offer of either reading (the cheapest
 better cabin or the cheapest economy fare), and `NOT_NAMED`, `TRAVEL_MANAGEMENT` (lines 102-104) or

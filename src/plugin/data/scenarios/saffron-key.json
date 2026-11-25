@@ -147,6 +147,8 @@
     ],
     "clauses": [
       "AIR_TRAVEL",
+      "DEFINITIONS",
+      "POLICY",
       "PROCEDURE"
     ],
     "unclear_phrase": ""
